@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main ()
+int main (int argc, char **argv)
 {
   const double REGULAR_PAY = 16.00;
   const double OVERTIME_PAY = (REGULAR_PAY * 1.5);

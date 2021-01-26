@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main ()
+int main (int argc, char **argv)
 {
   const double OZ_TO_TON = 35273.92;
   int weightOz;
