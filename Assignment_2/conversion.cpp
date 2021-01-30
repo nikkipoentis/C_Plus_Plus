@@ -2,38 +2,31 @@
 
 using namespace std;
 
-double getInput()
+void getInput(int& feet, int& inches)
 {
-  int feet;
-  int inches;
-
   cout << "Enter a length in feet and inches." << endl;
   cout << "Feet: ";
   cin >> feet;
   cout << "Inches: ";
   cin >> inches;
-
-  return feet + (inches / 12.0);
 }
 
-double standardToMetric(double lengthStandard)
+double calculate(int feet, int inches)
 {
+  double lengthStandard = feet + (inches / 12.0);
   return lengthStandard * 0.3048;
 }
 
-void toOutput(double lengthStandard, double lengthMetric)
+void standardToMetric(int feet, int inches, int& meters, float& centi)
 {
-  int feet;
-  int inches;
-  int meters;
-  float centi;
-
-  feet = lengthStandard;
-  inches = (lengthStandard - feet) * 12.0;
+  double lengthMetric = calculate(feet, inches);
   meters = lengthMetric;
   centi = (lengthMetric - meters) * 100.0;
+}
 
-  cout << feet << "ft and " << inches << "in = " << meters << "m and " << centi << "cm." << endl;
+void toOutput(int feet, int inches, int meters, float centi)
+{
+  cout << feet << "ft & " << inches << "in = " << meters << "m & " << centi << "cm." << endl;
 }
 
 int main(int argc, char** argv)
@@ -41,9 +34,12 @@ int main(int argc, char** argv)
   string response;
   while(true)
   {
-    double lengthStandard = getInput();
-    double lengthMetric = standardToMetric(lengthStandard);
-    toOutput(lengthStandard, lengthMetric);
+    int feet, inches, meters;
+    float centi;
+
+    getInput(feet, inches);
+    standardToMetric(feet, inches, meters, centi);
+    toOutput(feet, inches, meters, centi);
 
     cout << "Do you want to continue? Type \"exit\" to end this program. Type anything else to continue." << endl;
     cin >> response;
